@@ -1,0 +1,826 @@
+<!-- File: /site/SkyGlobal_Impex_pro.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+  <title>SkyGlobal Impex — Import-first Trading & Supply</title>
+  <meta name="description" content="We source globally and sell across India (exports on request). Smart sourcing, QC at origin, predictable ETAs, and pan-India distribution." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:title" content="SkyGlobal Impex — Import-first Trading & Supply">
+  <meta property="og:description" content="Global sourcing to your Indian warehouse — fast, compliant, visible.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/og/skyglobal-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://example.com/">
+
+  <style>
+    :root{
+      --bg1:#040b1a; --bg2:#0a1a33; --brand:#00d0ff; --brand2:#ffd166; --ink:#e8f1ff;
+      --muted:#90a4c0; --card:#0d1f3d70; --ring: 0 0 0 3px rgba(0,208,255,.45);
+      --glow:0 0 30px rgba(0,208,255,.35), 0 0 60px rgba(0,208,255,.15);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{ margin:0; font-family:'Outfit',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink);
+      background: radial-gradient(1300px 700px at 10% -10%,#0e2a56 0%, transparent 60%), linear-gradient(180deg,var(--bg1),var(--bg2) 60%);
+      overflow-x:hidden; perspective:1000px; transform-style:preserve-3d }
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; display:block }
+    .sr-only{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap }
+    .skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip-link:focus{ position:fixed; left:16px; top:12px; width:auto; height:auto; padding:10px 14px; background:#061326; border:1px solid rgba(255,255,255,.2); border-radius:10px; z-index:1000 }
+
+    #space{ position:fixed; inset:0; z-index:-1; display:block; background:linear-gradient(180deg,var(--bg1),#071329 60%)}
+
+    /* Header */
+    header{ position:fixed; top:0; left:0; right:0; z-index:40; display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px clamp(16px, 4vw, 40px); transition:all .25s ease;
+      backdrop-filter:saturate(150%) blur(8px);
+      background:linear-gradient(180deg,rgba(4,11,26,.72),rgba(4,11,26,.18)); border-bottom:1px solid rgba(255,255,255,.07)}
+    header.scrolled{ padding:10px clamp(14px, 3vw, 32px); background:linear-gradient(180deg,rgba(4,11,26,.86),rgba(4,11,26,.22)); }
+    .logo{ display:flex; align-items:center; gap:.7rem; color:var(--ink)}
+    .logo-img{ height:38px; width:auto; display:block; border-radius:10px; box-shadow: var(--glow) }
+    .brand{font-weight:800; letter-spacing:.3px; font-size:1.25rem; white-space:nowrap}
+
+    /* Buttons — global */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:11px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:var(--ink); cursor:pointer; font-weight:700; text-decoration:none; min-height:44px; }
+    .btn.primary{ background:linear-gradient(180deg,var(--brand),#72efff); color:#012330; border-color:transparent; box-shadow:var(--glow) }
+    .btn.ghost{ background:rgba(255,255,255,.04) }
+    .btn.link{ border-color:transparent; background:transparent; padding:8px 4px }
+    .btn:focus-visible{ outline:none; box-shadow:var(--ring) }
+
+    /* Menus */
+    nav{ display:flex; align-items:center; gap:6px }
+    .menu{ display:flex; align-items:center; gap:6px; margin:0; padding:0; list-style:none }
+    .menu > li{ position:relative }
+    .menu > li > a, .menu > li > button{ color:var(--muted); margin:0 6px; font-weight:600; background:none; border:0; padding:10px 10px; border-radius:10px; cursor:pointer }
+    .menu > li > a:hover, .menu > li > button:hover, .menu > li > button[aria-expanded="true"]{ color:var(--ink) }
+    .menu > li > button:focus-visible{ outline:none; box-shadow:var(--ring) }
+    .dd{ position:absolute; top:calc(100% + 10px); left:0; min-width:280px; background:#071226ee; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:12px; box-shadow:0 20px 60px rgba(0,0,0,.35); display:none }
+    .dd.open{ display:grid }
+    .dd.grid-2{ grid-template-columns:repeat(2,minmax(160px,1fr)); gap:8px }
+    .dd a{ display:flex; gap:10px; align-items:center; padding:10px 12px; border-radius:10px; color:var(--ink) }
+    .dd a:hover, .dd a:focus-visible{ background:rgba(255,255,255,.06); outline:none; box-shadow:var(--ring) }
+    .k{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,var(--brand),#72efff);color:#012330;font-weight:800;box-shadow:var(--glow)}
+
+    /* Header actions */
+    .actions{ display:flex; align-items:center; gap:10px }
+    .iconbtn{ position:relative; display:inline-grid; place-items:center; width:42px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color:var(--ink); box-shadow:0 8px 24px rgba(0,0,0,.25); cursor:pointer; font-weight:800 }
+    .iconbtn:focus-visible{ outline:none; box-shadow:var(--ring) }
+    .badge-dot{ position:absolute; right:-6px; top:-6px; min-width:20px; height:20px; padding:0 6px; display:inline-grid; place-items:center; font-size:.72rem; border-radius:999px; background:linear-gradient(180deg,var(--brand),#72efff); color:#012330; border:1px solid rgba(255,255,255,.25); box-shadow:var(--glow) }
+
+    /* Mobile nav */
+    .hamburger{ display:none }
+    .mnav-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.45); display:none; z-index:55 }
+    .mnav{ position:fixed; left:0; top:0; bottom:0; width:min(320px,86vw); background:#061326; border-right:1px solid rgba(255,255,255,.12); box-shadow:20px 0 60px rgba(0,0,0,.45); transform:translateX(-100%); transition:transform .3s ease; z-index:56; display:flex; flex-direction:column }
+    .mnav.open{ transform:translateX(0) }
+    .mnav header{ padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.08) }
+    .mnav ul{ list-style:none; padding:10px 12px; margin:0 }
+    .mnav li a{ display:block; padding:12px; border-radius:10px; color:var(--ink) }
+    .mnav li a:hover{ background:rgba(255,255,255,.06) }
+
+    /* Sections */
+    section{ padding:88px clamp(18px, 5vw, 64px)}
+    .hero{ min-height:100svh; display:grid; place-items:center; position:relative; overflow:hidden; padding-top:120px; text-align:center }
+    .hero h1{ font-size: clamp(2.2rem, 5vw, 4rem); margin:0 0 12px; line-height:1.05; text-shadow:0 6px 30px rgba(0,0,0,.4)}
+    .hero p{ color:var(--muted); max-width:880px; margin:0 auto 28px; font-size: clamp(1rem, 2.2vw, 1.25rem)}
+    .cta-bar{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:10px }
+    .hero .stats{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:28px}
+    .stat{ background:linear-gradient(180deg, rgba(13,31,61,.8), rgba(13,31,61,.4)); border:1px solid rgba(255,255,255,.08); padding:14px 18px; border-radius:16px; min-width:180px}
+    .stat .big{ font-size:1.1rem; font-weight:800}
+
+    .layer{ position:absolute; inset:auto; pointer-events:none; transform-style:preserve-3d; will-change:transform; filter:drop-shadow(0 12px 30px rgba(0,0,0,.3))}
+
+    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, 1fr)}
+    .card{ grid-column: span 4; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:20px; min-height:180px; position:relative; overflow:hidden; transform-style:preserve-3d; transition:box-shadow .2s ease, transform .2s ease }
+    .card:focus-within{ box-shadow:var(--ring) }
+    .card h3{ margin:.2rem 0 .4rem; font-size:1.2rem}
+    .card p{ color:var(--muted)}
+    .badge{ position:absolute; top:14px; right:14px; padding:6px 10px; font-size:.8rem; border-radius:999px; border:1px solid rgba(255,255,255,.15); background:#071226cc}
+    .icon{ width:64px; height:64px; border-radius:16px; display:grid; place-items:center; font-weight:800; letter-spacing:1px; margin-bottom:14px; background:linear-gradient(180deg,var(--brand),#5bd7ff); color:#012330; box-shadow: var(--glow); transform: translateZ(50px)}
+
+    .headline{ font-size: clamp(1.6rem, 3.6vw, 2.4rem); margin:0 0 10px}
+    .sub{ color:var(--muted); margin:0 0 24px; max-width:900px}
+
+    /* Expandable details */
+    .details{ max-height:0; overflow:hidden; opacity:.0; transition:max-height .45s ease, opacity .45s ease, margin-top .3s ease }
+    .card.open .details{ max-height:220px; opacity:1; margin-top:10px }
+    .more{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; color:var(--ink); padding:8px 10px; border:1px solid rgba(255,255,255,.15); border-radius:12px; background:rgba(255,255,255,.04) }
+
+    .pulse{ animation:pulse 1.2s ease }
+    @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(0,208,255,.6) } 100%{ box-shadow:0 0 0 18px rgba(0,208,255,0) } }
+
+    footer{ padding:40px 24px; color:var(--muted); text-align:center; border-top:1px solid rgba(255,255,255,.08)}
+
+    /* Modals & Drawers */
+    .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:20px; z-index:60 }
+    .modal{ width:min(720px,96vw); background:#061326; border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.5) }
+    .modal header{ position:relative; padding:16px 18px; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); border-bottom:1px solid rgba(255,255,255,.08) }
+    .modal header h3{ margin:0; font-size:1.2rem }
+    .modal .content{ padding:18px }
+    .modal .row{ display:grid; gap:12px; grid-template-columns:repeat(2,1fr) }
+    .modal label{ display:block; font-weight:600; margin-bottom:6px }
+    .modal input,.modal select,.modal textarea{ width:100%; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:#071a32; color:var(--ink) }
+    .modal .actions{ display:flex; gap:10px; justify-content:flex-end; padding:0 18px 18px }
+    .close-x{ position:absolute; right:10px; top:10px; background:none; border:0; color:var(--muted); font-size:20px; cursor:pointer }
+
+    .drawer-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.45); display:none; z-index:55 }
+    .drawer{ position:fixed; right:0; top:0; bottom:0; width:min(420px,96vw); background:#061326; border-left:1px solid rgba(255,255,255,.12); box-shadow:-20px 0 60px rgba(0,0,0,.45); transform:translateX(100%); transition:transform .35s ease; z-index:56; display:flex; flex-direction:column }
+    .drawer.show{ transform:translateX(0) }
+    .drawer header{ padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); display:flex; align-items:center; justify-content:space-between }
+    .drawer .body{ padding:18px; overflow:auto; flex:1 }
+
+    /* Search dropdown */
+    .searchbox{ display:grid; gap:10px; width:320px }
+    .searchbox input{ width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:#061a31; color:#e8f1ff }
+    .tagrow{ display:flex; gap:8px; flex-wrap:wrap }
+    .tag{ padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.05); font-size:.85rem; cursor:pointer }
+
+    /* Products */
+    .product-toolbar{ display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:12px }
+    .product-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:22px }
+    .product-card{ grid-column: span 3; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden; display:flex; flex-direction:column }
+    .product-card .imgwrap{ aspect-ratio: 4/3; background:#061a31; display:grid; place-items:center }
+    .product-card img{ max-width:100%; max-height:100%; object-fit:contain }
+    .product-card .pbody{ padding:14px }
+    .product-card h4{ margin:.2rem 0 .4rem; font-size:1.05rem }
+    .price{ font-weight:800 }
+    .muted{ color:var(--muted) }
+    .row-actions{ display:flex; gap:8px; padding:12px 14px }
+    .row-actions .btn{ flex:1 }
+
+    /* Responsive */
+    @media (max-width: 980px){ .card{ grid-column: span 6 } .modal .row{ grid-template-columns:1fr } }
+    @media (max-width: 640px){
+      nav{ display:none }
+      .hamburger{ display:inline-grid; place-items:center; width:42px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.15);
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color:var(--ink) }
+      .card{ grid-column: 1 / -1 }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#top" class="skip-link">Skip to content</a>
+  <canvas id="space" aria-hidden="true"></canvas>
+
+  <header>
+    <a class="logo" href="#top" aria-label="SkyGlobal Impex home">
+      <img class="logo-img" alt="SkyGlobal Impex logo — S glyph" src="onlylogo.png" />
+      <span class="brand">SkyGlobal Impex</span>
+    </a>
+
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li class="has-dd">
+          <button class="dd-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dd grid-2" role="menu">
+            <a href="#categories" data-open="verticals-elec"><span class="k">ELEC</span> Electronics & Gadgets</a>
+            <a href="#categories" data-open="verticals-home"><span class="k">HOME</span> Home & Kitchen</a>
+            <a href="#categories" data-open="verticals-apparel"><span class="k">FASH</span> Apparel & Accessories</a>
+            <a href="#categories" data-open="verticals-care"><span class="k">CARE</span> Beauty & Personal Care</a>
+            <a href="#categories" data-open="verticals-sports"><span class="k">SPRT</span> Sports & Outdoors</a>
+            <a href="#categories" data-open="verticals-toys"><span class="k">TOYS</span> Kids & Toys</a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button class="dd-toggle" aria-haspopup="true" aria-expanded="false">Services ▾</button>
+          <div class="dd" role="menu" aria-label="Services">
+            <a href="#services" data-open="svc-sourcing"><span class="k">SRC</span> Global Sourcing</a>
+            <a href="#services" data-open="svc-customs"><span class="k">CST</span> Customs & Freight</a>
+            <a href="#services" data-open="svc-distribution"><span class="k">IND</span> Pan-India Distribution</a>
+            <a href="#services" data-open="svc-qc"><span class="k">QC</span> QA/QC at Origin</a>
+            <a href="#services" data-open="svc-insurance"><span class="k">INS</span> Insurance & Trade Finance</a>
+            <a href="#services" data-open="svc-returns"><span class="k">RMA</span> Returns & RMA</a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button class="dd-toggle" aria-haspopup="true" aria-expanded="false">Why Us ▾</button>
+          <div class="dd" role="menu" aria-label="Why Us">
+            <a href="#whyus" data-open="why-eta"><span class="k">ETA</span> Live ETAs</a>
+            <a href="#whyus" data-open="why-cost"><span class="k">LND</span> Lower Landed Cost</a>
+            <a href="#whyus" data-open="why-ops"><span class="k">OPS</span> Operator-led Care</a>
+            <a href="#whyus" data-open="why-paperless"><span class="k">DOC</span> Paperless Docs</a>
+            <a href="#whyus" data-open="why-qc"><span class="k">QC</span> QC at Origin</a>
+            <a href="#whyus" data-open="why-network"><span class="k">NET</span> Trusted Supplier Network</a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button class="dd-toggle" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
+          <div class="dd" role="menu" aria-label="Contact">
+            <a href="#contact" data-open-contact><span class="k">GTQ</span> General Contact / Quote</a>
+            <a href="#contact" data-open-d2c data-topic="Product Inquiry"><span class="k">D2C</span> D2C Inquiry</a>
+            <a href="#contact" data-open-d2c data-topic="General Feedback"><span class="k">FDB</span> Feedback</a>
+            <a href="#contact" data-open-b2b><span class="k">B2B</span> B2B Inquiry</a>
+            <a href="#contact" data-open-complaint><span class="k">CMP</span> Complaint (Business)</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">☰</button>
+
+    <div class="actions">
+      <!-- Search icon with hover/click dropdown -->
+      <div class="has-dd">
+        <button class="iconbtn dd-toggle" aria-label="Search" aria-expanded="false">🔍</button>
+        <div class="dd" role="menu" aria-label="Search">
+          <form id="searchForm" class="searchbox" onsubmit="return false;">
+            <label class="sr-only" for="searchInput">Search the site</label>
+            <input id="searchInput" type="search" placeholder="Search products, lanes, services…" autocomplete="off">
+            <div class="tagrow" aria-label="Quick tags">
+              <span class="tag" data-q="Electronics">Electronics</span>
+              <span class="tag" data-q="Home">Home</span>
+              <span class="tag" data-q="QC">QC</span>
+              <span class="tag" data-q="Distribution">Distribution</span>
+              <span class="tag" data-q="China → India">China → India</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Account icon with dropdown (hover/click) -->
+      <div class="has-dd">
+        <button class="iconbtn dd-toggle" aria-label="Account" title="Account" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <div class="dd" role="menu" aria-label="Account menu">
+          <a href="#" data-open-login-page><span class="k">IN</span> Log In</a>
+          <a href="#" data-open-signup-page><span class="k">UP</span> Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Wishlist & Cart -->
+      <button class="iconbtn" aria-label="Wishlist" data-open-wishlist>♥<span class="badge-dot" id="wishCount">0</span></button>
+      <button class="iconbtn" aria-label="Cart" data-open-cart>🛒<span class="badge-dot" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <div class="mnav-backdrop" id="mnavBackdrop"></div>
+  <aside class="mnav" id="mnav" aria-hidden="true">
+    <header><strong>Menu</strong></header>
+    <ul>
+      <li><a href="#categories" data-close-mnav>Categories</a></li>
+      <li><a href="#services" data-close-mnav>Services</a></li>
+      <li><a href="#products" data-close-mnav>Products</a></li>
+      <li><a href="#whyus" data-close-mnav>Why Us</a></li>
+      <li><a href="#contact" data-close-mnav>Contact</a></li>
+    </ul>
+  </aside>
+
+  <main id="top">
+    <section class="hero" aria-label="SkyGlobal Impex hero">
+      <img class="layer ship1" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'>
+        <rect x='0' y='70' width='220' height='30' fill='%230c1e3c'/>
+        <rect x='10' y='60' width='200' height='40' fill='%23112a52'/>
+        <rect x='18' y='50' width='180' height='50' fill='%23173566'/>
+        <text x='30' y='84' font-size='18' fill='%238fdfff' font-family='Outfit'>SKYGLOBAL</text>
+      </svg>" alt="Decorative container illustration"/>
+      <img class="layer ship2" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='260' height='120' viewBox='0 0 260 120'>
+        <rect x='0' y='68' width='260' height='34' fill='%230c1e3c'/>
+        <rect x='10' y='58' width='240' height='46' fill='%23112a52'/>
+        <rect x='18' y='46' width='224' height='58' fill='%23173566'/>
+        <text x='26' y='82' font-size='18' fill='%23ffd166' font-family='Outfit'>IMPEX SUPPLY</text>
+      </svg>" alt="Decorative container illustration"/>
+
+      <div>
+        <h1>Global finds, delivered the right way.</h1>
+        <p><strong>All categories. One operator-led partner for sourcing, QC, customs, and distribution across India.</strong></p>
+        <div class="cta-bar">
+          <a class="btn primary" href="#services">Explore Services</a>
+          <a class="btn ghost" href="#contact">Talk to Us</a>
+        </div>
+        <div class="stats" role="list">
+          <div class="stat" role="listitem"><div class="big">Trackable shipping</div><small>milestone alerts</small></div>
+          <div class="stat" role="listitem"><div class="big">Lower landed cost</div><small>smart HS + lanes</small></div>
+          <div class="stat" role="listitem"><div class="big">24/7</div><small>ops & escalation</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section id="categories">
+      <h2 class="headline">Shop by Category</h2>
+      <p class="sub">Clear categories so buyers instantly find what they need.</p>
+      <div class="grid">
+        <article class="card" id="verticals-elec" tabindex="0" data-tilt>
+          <span class="badge">Gadgets</span>
+          <div class="icon">ELEC</div>
+          <h3>Electronics & Gadgets</h3>
+          <p>Earbuds, powerbanks, wearables, LEDs, modern gadgets.</p>
+        </article>
+        <article class="card" id="verticals-home" tabindex="0" data-tilt>
+          <span class="badge">Home</span>
+          <div class="icon">HOME</div>
+          <h3>Home & Kitchen</h3>
+          <p>Blenders, storage, organizers, lighting, decor.</p>
+        </article>
+        <article class="card" id="verticals-apparel" tabindex="0" data-tilt>
+          <span class="badge">Fashion</span>
+          <div class="icon">FASH</div>
+          <h3>Apparel & Accessories</h3>
+          <p>T-shirts, watches, bags, footwear, sunglasses.</p>
+        </article>
+        <article class="card" id="verticals-care" tabindex="0" data-tilt>
+          <span class="badge">Beauty</span>
+          <div class="icon">CARE</div>
+          <h3>Beauty & Personal Care</h3>
+          <p>Grooming, trimmers, skin & hair care tools.</p>
+        </article>
+        <article class="card" id="verticals-sports" tabindex="0" data-tilt>
+          <span class="badge">Sports</span>
+          <div class="icon">SPRT</div>
+          <h3>Sports & Outdoors</h3>
+          <p>Bottles, mats, basic gear, travel accessories.</p>
+        </article>
+        <article class="card" id="verticals-toys" tabindex="0" data-tilt>
+          <span class="badge">Toys</span>
+          <div class="icon">TOYS</div>
+          <h3>Kids & Toys</h3>
+          <p>STEM kits, soft toys, craft & learning supplies.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="headline">Built for India-first importers (exports on request)</h2>
+      <p class="sub">From global sourcing to your Indian warehouse—fast, compliant, and visible. Optional export services for proven SKUs and B2B buyers.</p>
+      <div class="grid">
+        <article class="card tilt service" id="svc-sourcing"><span class="badge">Source</span><div class="icon">SRC</div><h3>Global Sourcing</h3><p>Supplier shortlisting, factory audits, samples & QC. We negotiate MOQs and lead times so you don’t have to.</p><button class="more" data-toggle="svc-sourcing" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>We compare landed cost by origin, validate certificates, and manage pilot runs before scale-up.</p></div></article>
+        <article class="card tilt service" id="svc-customs"><span class="badge">Import</span><div class="icon">CST</div><h3>Customs & Freight</h3><p>HSN classification, duty optimization, bookings, insurance, compliant import filings.</p><button class="more" data-toggle="svc-customs" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>We plan ocean/air mix by seasonality, buffer for CFS dwell, and pre-clear wherever possible.</p></div></article>
+        <article class="card tilt service" id="svc-distribution"><span class="badge">Sell</span><div class="icon">IND</div><h3>Pan-India Distribution</h3><p>Warehousing, pick/pack, channel partnerships, B2B fulfillment so your stock moves fast.</p><button class="more" data-toggle="svc-distribution" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>Networked 3PLs with SLA dashboards and COD/TO-Pay options for select lanes.</p></div></article>
+        <article class="card tilt service" id="svc-qc"><span class="badge">Quality</span><div class="icon">QC</div><h3>QA/QC at Origin</h3><p>Pre-shipment inspections and functional testing to avoid surprises at arrival.</p><button class="more" data-toggle="svc-qc" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>AQL sampling, photo reports, and remedial actions with suppliers before vessel cutoff.</p></div></article>
+        <article class="card tilt service" id="svc-insurance"><span class="badge">Risk</span><div class="icon">INS</div><h3>Insurance & Trade Finance</h3><p>Cargo insurance and LC/escrow advisory to keep cash flowing safely.</p><button class="more" data-toggle="svc-insurance" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>We help choose coverage and instruments that fit your SKU velocity and margin.</p></div></article>
+        <article class="card tilt service" id="svc-returns"><span class="badge">After-sales</span><div class="icon">RMA</div><h3>Returns & RMA</h3><p>Reverse logistics and basic refurbishment for D2C-friendly experience.</p><button class="more" data-toggle="svc-returns" aria-expanded="false">Learn more ▾</button><div class="details" aria-hidden="true"><p>Regional hubs aggregate returns; we salvage, repack, or recycle per policy.</p></div></article>
+      </div></section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <h2 class="headline">Featured products</h2>
+      <p class="sub">Add/edit items in <code>PRODUCTS</code> (inline for now; can switch to <code>products.json</code> later).</p>
+      <div class="product-toolbar">
+        <div>
+          <label for="filterCat" style="font-weight:600">Category:</label>
+          <select id="filterCat" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#061a31;color:var(--ink)">
+            <option value="all">All</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Home">Home</option>
+            <option value="Apparel">Apparel</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Sports">Sports</option>
+            <option value="Toys">Toys</option>
+          </select>
+        </div>
+        <div>
+          <label for="sortBy" style="font-weight:600">Sort:</label>
+          <select id="sortBy" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#061a31;color:var(--ink)">
+            <option value="pop">Popularity</option>
+            <option value="price-asc">Price ↑</option>
+            <option value="price-desc">Price ↓</option>
+          </select>
+        </div>
+      </div>
+      <div id="productGrid" class="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="whyus">
+      <h2 class="headline">Why businesses choose SkyGlobal Impex</h2>
+      <p class="sub">India-first execution with modern visibility and no-surprise landings.</p>
+      <div class="grid">
+        <article class="card tilt why" id="why-eta"><div class="icon">ETA</div><h3>Live ETAs</h3><p>Milestone tracking from factory to Indian port to warehouse—get proactive alerts, not excuses.</p><button class="more" data-toggle="why-eta" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>Integrations push exceptions (rolled vessel, CFS hold) to your inbox/WhatsApp instantly.</p></div></article>
+        <article class="card tilt why" id="why-cost"><div class="icon">LND</div><h3>Lower Landed Cost</h3><p>We optimize HS codes, packaging, and lanes to reduce your total landed cost without risking compliance.</p><button class="more" data-toggle="why-cost" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>We run should-cost models and simulate duty + freight under multiple scenarios.</p></div></article>
+        <article class="card tilt why" id="why-ops"><div class="icon">OPS</div><h3>Operator-led Care</h3><p>Dedicated ops who actually pick up the phone. 24/7 escalation when timelines matter.</p><button class="more" data-toggle="why-ops" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>Named owner per shipment with clear SLA and escalation matrix.</p></div></article>
+        <article class="card tilt why" id="why-paperless"><div class="icon">DOC</div><h3>Paperless Docs</h3><p>Digital document vault and e-sign workflows.</p><button class="more" data-toggle="why-paperless" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>Invoices, BoL, packing lists, CoO stored securely and shareable with your team.</p></div></article>
+        <article class="card tilt why" id="why-qc"><div class="icon">QC</div><h3>QC at Origin</h3><p>Catch defects before loading.</p><button class="more" data-toggle="why-qc" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>Third-party inspections with photo/video and acceptance criteria baked in.</p></div></article>
+        <article class="card tilt why" id="why-network"><div class="icon">NET</div><h3>Trusted Supplier Network</h3><p>Pre-vetted factories across key categories.</p><button class="more" data-toggle="why-network" aria-expanded="false">See details ▾</button><div class="details" aria-hidden="true"><p>We maintain scorecards on quality, lead time, and compliance for faster vendor onboarding.</p></div></article>
+      </div>
+    </section>
+
+    <section id="trust">
+      <h2 class="headline">What clients say</h2>
+      <p class="sub">Real feedback from import-led brands we support.</p>
+      <div class="grid" id="testimonials">
+        <article class="card"><h3>“Reliable timelines.”</h3><p class="sub">“We finally hit consistent in-stock rates after moving lanes to SkyGlobal.”</p><div class="badge">Consumer Electronics</div></article>
+        <article class="card"><h3>“Paperwork is painless.”</h3><p class="sub">“Customs and duties used to be a black box—now it’s predictable.”</p><div class="badge">FMCG</div></article>
+        <article class="card"><h3>“Great ops team.”</h3><p class="sub">“They jumped on a port delay and kept our launch date.”</p><div class="badge">Industrial</div></article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="headline">Get a quote</h2>
+      <p class="sub">Buying from overseas and selling in India? Tell us what you want to move—origin, target port, and timelines.</p>
+      <form class="grid" id="quoteForm">
+        <div class="card" style="grid-column: span 6"><label>Full Name<br><input required name="name" placeholder="Your Name" aria-required="true" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)"></label></div>
+        <div class="card" style="grid-column: span 6"><label>Email<br><input required type="email" name="email" placeholder="you@company.com" aria-required="true" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)"></label></div>
+        <div class="card" style="grid-column: span 6"><label>Phone / WhatsApp<br><input name="phone" placeholder="+91 …" inputmode="tel" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)"></label></div>
+        <div class="card" style="grid-column: span 6"><label>Purpose<br>
+            <select id="contactPurpose" name="purpose" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)">
+              <option>General Contact / Quote</option>
+              <option>D2C: Product Inquiry</option>
+              <option>D2C: General Feedback</option>
+              <option>B2B Inquiry</option>
+              <option>Complaint (Business)</option>
+            </select>
+          </label></div>
+        <div class="card" style="grid-column: span 6"><label>Lane<br>
+            <select name="lane" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)">
+              <option>China → India</option><option>Vietnam → India</option><option>Thailand → India</option><option>EU → India</option><option>US → India</option><option>Export from India</option>
+            </select>
+          </label></div>
+        <div class="card" style="grid-column: span 12"><label>What do you want to move?<br>
+            <textarea required name="details" placeholder="Products, HS codes (if known), volumes, INCOTERMS, timeline…" rows="4" aria-required="true" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#061326;color:var(--ink)"></textarea>
+          </label></div>
+        <div style="grid-column: 1 / -1; display:flex; gap:14px; flex-wrap:wrap; align-items:center">
+          <button class="btn primary" type="submit">Submit</button>
+          <a class="btn ghost" id="waLink" href="#" rel="noopener" target="_blank">WhatsApp us</a>
+          <span id="formMsg" class="muted" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> SkyGlobal Impex. Import-focused trading & supply.</footer>
+
+  <!-- Drawers: Wishlist & Cart -->
+  <div class="drawer-backdrop" id="wishBackdrop"></div>
+  <aside class="drawer" id="wishlist" aria-labelledby="wishTitle" aria-hidden="true">
+    <header><strong id="wishTitle">Liked Items</strong><button class="close-x" data-close-wishlist aria-label="Close wishlist">×</button></header>
+    <div class="body" id="wishlistBody"><p class="sub">No liked items yet. Explore categories to add products you love.</p></div>
+  </aside>
+  <div class="drawer-backdrop" id="cartBackdrop"></div>
+  <aside class="drawer" id="cart" aria-labelledby="cartTitle" aria-hidden="true">
+    <header><strong id="cartTitle">Your Cart</strong><button class="close-x" data-close-cart aria-label="Close cart">×</button></header>
+    <div class="body" id="cartBody"><p class="sub">Your cart is empty. Add items from categories when available.</p></div>
+    <div style="padding:12px 18px; border-top:1px solid rgba(255,255,255,.08); display:flex; gap:10px; align-items:center">
+      <div style="flex:1" class="muted" id="cartTotal">Total: ₹0</div>
+      <button class="btn primary" id="proceedQuote">Proceed to Quote</button>
+    </div>
+  </aside>
+
+  <!-- Hidden modals -->
+  <div class="modal-backdrop" id="loginModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle"><header><h3 id="loginTitle">Log In</h3><button class="close-x" data-close-login aria-label="Close">×</button></header><form id="loginForm" class="content" onsubmit="return false;"><div class="row"><div><label>Email</label><input type="email" name="email" required></div><div><label>Password</label><input type="password" name="pass" required></div></div><div class="actions"><button type="button" class="btn ghost" data-close-login>Cancel</button><button type="submit" class="btn primary">Log In</button></div></form></div></div>
+  <div class="modal-backdrop" id="signupModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle"><header><h3 id="signupTitle">Sign Up</h3><button class="close-x" data-close-signup aria-label="Close">×</button></header><form id="signupForm" class="content" onsubmit="return false;"><div class="row"><div><label>Full Name</label><input name="name" required></div><div><label>Email</label><input type="email" name="email" required></div></div><div class="row"><div><label>Password</label><input type="password" name="pass" required></div><div><label>Phone (optional)</label><input name="phone"></div></div><div class="actions"><button type="button" class="btn ghost" data-close-signup>Cancel</button><button type="submit" class="btn primary">Create Account</button></div></form></div></div>
+
+  <!-- Floating WhatsApp: builds a prefilled message from cart/intent -->
+  <a href="#contact" id="waFab" aria-label="WhatsApp" style="position:fixed; right:18px; bottom:18px; z-index:25;">
+    <span style="display:inline-grid;place-items:center;width:56px;height:56px;border-radius:18px;background:linear-gradient(180deg,#25D366,#7df7a1); box-shadow:0 10px 30px rgba(0,0,0,.35); color:#012b10; font-weight:800">WA</span>
+  </a>
+
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script>
+  // ---------- Utilities ----------
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (sel, root=document)=>root.querySelector(sel);
+  const $$ = (sel, root=document)=>Array.from(root.querySelectorAll(sel));
+  const rupee = new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR', maximumFractionDigits:0});
+  const money = n => rupee.format(n);
+
+  function setYear(){ const y = document.getElementById('y'); if(y) y.textContent = new Date().getFullYear(); }
+  setYear();
+
+  // Header shrink on scroll
+  let lastY=0; addEventListener('scroll', ()=>{
+    const h=$('header'); if(!h) return;
+    const sc = window.scrollY>8;
+    if(sc && !h.classList.contains('scrolled')) h.classList.add('scrolled');
+    else if(!sc && h.classList.contains('scrolled')) h.classList.remove('scrolled');
+    lastY=scrollY;
+  }, {passive:true});
+
+  // ---------- Mobile Nav ----------
+  const hamburger = $('#hamburger'), mnav = $('#mnav'), mnavBackdrop = $('#mnavBackdrop');
+  function openMnav(){ mnav.classList.add('open'); mnavBackdrop.style.display='block'; hamburger.setAttribute('aria-expanded','true'); mnav.setAttribute('aria-hidden','false'); }
+  function closeMnav(){ mnav.classList.remove('open'); mnavBackdrop.style.display='none'; hamburger.setAttribute('aria-expanded','false'); mnav.setAttribute('aria-hidden','true'); }
+  if(hamburger){ hamburger.addEventListener('click', ()=> mnav.classList.contains('open')?closeMnav():openMnav()); }
+  if(mnavBackdrop){ mnavBackdrop.addEventListener('click', closeMnav); }
+  $$('[data-close-mnav]').forEach(a=> a.addEventListener('click', closeMnav));
+
+  // ---------- Dropdowns (hover + click + keyboard) ----------
+  $$('.dd-toggle').forEach(btn=>{
+    const li = btn.closest('.has-dd'); const panel = li.querySelector('.dd');
+    function open(){ panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    btn.addEventListener('click', e=>{ e.preventDefault(); panel.classList.contains('open')?close():open(); });
+    document.addEventListener('click', e=>{ if(!li.contains(e.target)) close(); });
+    btn.addEventListener('keydown', e=>{
+      if(e.key==='Escape'){ close(); btn.focus(); }
+      if((e.key==='ArrowDown'||e.key==='Enter'||e.key===' ') && !panel.classList.contains('open')){ e.preventDefault(); open(); const first = panel.querySelector('a'); if(first) first.focus(); }
+    });
+    panel.addEventListener('keydown', e=>{ if(e.key==='Escape'){ close(); btn.focus(); }});
+  });
+
+  // ---------- On-page open (no new tabs) ----------
+  function openCardById(id){
+    const el=document.getElementById(id); if(!el) return false;
+    const sec = el.closest('section') || document.body;
+    if(el.classList.contains('service') || el.classList.contains('why')) el.classList.add('open');
+    sec.scrollIntoView({behavior:'smooth', block:'start'}); el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.classList.add('pulse'); setTimeout(()=> el.classList.remove('pulse'), 1200);
+    $$('.dd.open').forEach(p=>p.classList.remove('open'));
+    $$('.dd-toggle[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+    return true;
+  }
+  $$('[data-open]').forEach(a=> a.addEventListener('click', e=>{ e.preventDefault(); openCardById(a.dataset.open); }));
+
+  // Expand/collapse details buttons (ARIA sync)
+  $$('.more').forEach(btn=> btn.addEventListener('click', ()=>{
+    const id=btn.getAttribute('data-toggle'); const card=document.getElementById(id);
+    if(card){ const isOpen = card.classList.toggle('open'); btn.setAttribute('aria-expanded', String(isOpen)); const det = card.querySelector('.details'); if(det) det.setAttribute('aria-hidden', String(!isOpen)); }
+  }));
+
+  // Contact menu -> set purpose and scroll to contact
+  function openContactWith(purpose){ const sel=$('#contactPurpose'); if(sel) sel.value=purpose; $('#contact').scrollIntoView({behavior:'smooth', block:'start'}); $$('.dd.open').forEach(p=>p.classList.remove('open')); }
+  $$('[data-open-contact]').forEach(el=> el.addEventListener('click', e=>{ e.preventDefault(); openContactWith('General Contact / Quote'); }));
+  $$('[data-open-d2c]').forEach(el=> el.addEventListener('click', e=>{ e.preventDefault(); const t=el.dataset.topic||'Product Inquiry'; openContactWith(t==='Product Inquiry' ? 'D2C: Product Inquiry' : 'D2C: General Feedback'); }));
+  $$('[data-open-b2b]').forEach(el=> el.addEventListener('click', e=>{ e.preventDefault(); openContactWith('B2B Inquiry'); }));
+  $$('[data-open-complaint]').forEach(el=> el.addEventListener('click', e=>{ e.preventDefault(); openContactWith('Complaint (Business)'); }));
+
+  // ---------- Search helpers ----------
+  function searchSite(q){
+    q=q.toLowerCase();
+    const items=[...$$('.card')].map(c=>({ id:c.id, title:c.querySelector('h3')?c.querySelector('h3').textContent:c.querySelector('h2')?c.querySelector('h2').textContent:'', text:c.textContent.trim() }));
+    return items.filter(it=> (it.title && it.title.toLowerCase().includes(q)) || it.text.toLowerCase().includes(q));
+  }
+  function showToast(msg){
+    let t=$('#toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.style.cssText='position:fixed;right:16px;top:76px;z-index:70;padding:10px 12px;border-radius:10px;background:rgba(7,18,38,.92);border:1px solid rgba(255,255,255,.12);color:#e8f1ff;box-shadow:0 20px 60px rgba(0,0,0,.35);font-weight:600'; document.body.appendChild(t);}
+    t.textContent=msg; t.style.opacity='1'; setTimeout(()=>{ t.style.transition='opacity .6s'; t.style.opacity='0'; }, 1600);
+  }
+  function handleSearch(q){
+    if(!q) return;
+    const results=searchSite(q); if(results.length){ openCardById(results[0].id); showToast(`${results.length} result${results.length>1?'s':''} for "${q}"`); } else { showToast('No results'); }
+  }
+  const searchForm = $('#searchForm'); if(searchForm){ searchForm.addEventListener('submit', ()=>{ const q=$('#searchInput').value.trim(); handleSearch(q); }); }
+  $$('.tag').forEach(tag=> tag.addEventListener('click', ()=> handleSearch(tag.dataset.q)));
+
+  // ---------- Drawers (wishlist & cart) ----------
+  const wish=$('#wishlist'), wishBackdrop=$('#wishBackdrop');
+  const cart=$('#cart'), cartBackdrop=$('#cartBackdrop');
+  function openWish(){ wish.classList.add('show'); wishBackdrop.style.display='block'; wish.setAttribute('aria-hidden','false'); }
+  function closeWish(){ wish.classList.remove('show'); wishBackdrop.style.display='none'; wish.setAttribute('aria-hidden','true'); }
+  function openCart(){ cart.classList.add('show'); cartBackdrop.style.display='block'; cart.setAttribute('aria-hidden','false'); }
+  function closeCart(){ cart.classList.remove('show'); cartBackdrop.style.display='none'; cart.setAttribute('aria-hidden','true'); }
+  $$('[data-open-wishlist]').forEach(b=> b.addEventListener('click', openWish));
+  $$('[data-close-wishlist]').forEach(b=> b.addEventListener('click', closeWish));
+  wishBackdrop.addEventListener('click', closeWish);
+  $$('[data-open-cart]').forEach(b=> b.addEventListener('click', openCart));
+  $$('[data-close-cart]').forEach(b=> b.addEventListener('click', closeCart));
+  cartBackdrop.addEventListener('click', closeCart);
+  addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeWish(); closeCart(); $$('.dd').forEach(p=>p.classList.remove('open')); }})
+
+  // ---------- PRODUCTS & CART/WISHLIST ----------
+  // Inline fallback PRODUCTS (can be replaced by fetching /data/products.json later).
+  const PRODUCTS = [
+    {id:'p1', title:'Folding Shoe Drying Machine — Stretchable UV Sterilization Shoes Dryer Heater', cat:'Electronics', price:1499, img:'Shoe%20Drying.png', blurb:'Electric control, 3 modes'},
+    {id:'p2', title:'LED Desk Lamp', cat:'Home', price:1299, img:'Desk%20Lamp.png', blurb:'Dimmable, touch control, mains/battery'},
+    {id:'p3', title:'Gym Water Bottle (Vacuum Insulated)', cat:'Sports', price:999, img:'water%20bottle.png', blurb:'BPA-free, leak proof, wide mouth'},
+    {id:'p4', title:'USB-Rechargeable Mini Bag Sealer', cat:'Electronics', price:799, img:'sealer.png', blurb:'Handheld, low noise, easy clean'},
+    {id:'p5', title:'Licensed RC Car 1:24 — Lamborghini Sesto Elemento', cat:'Toys', price:1499, img:'toy.png', blurb:'2.4Ghz controller, high speed'},
+    {id:'p6', title:'USB-C Beard Trimmer (40-lengths)', cat:'Beauty', price:1399, img:'trimmer.png', blurb:'Triple blade, travel-friendly'}
+  ];
+
+  const WISHLIST = new Map(JSON.parse(localStorage.getItem('sg_wish')||'[]'));
+  const CART = new Map(JSON.parse(localStorage.getItem('sg_cart')||'[]'));
+  function saveState(){
+    localStorage.setItem('sg_wish', JSON.stringify([...WISHLIST.entries()]));
+    localStorage.setItem('sg_cart', JSON.stringify([...CART.entries()].map(([id,entry])=>[id,{item:entry.item,qty:entry.qty}]) ));
+  }
+
+  function refreshBadges(){
+    $('#wishCount').textContent = WISHLIST.size.toString();
+    let qty=0; CART.forEach(v=>qty+=v.qty); $('#cartCount').textContent = qty.toString();
+  }
+  function renderDrawers(){
+    const wb = $('#wishlistBody');
+    wb.innerHTML = WISHLIST.size? [...WISHLIST.values()].map(p=>`
+      <div style="display:flex;gap:10px;align-items:center;margin:8px 0">
+        <img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async" style="width:56px;height:42px;object-fit:cover;border-radius:8px">
+        <div style="flex:1"><div style="font-weight:700">${p.title}</div><div class="muted">${money(p.price)}</div></div>
+      </div>`).join('') : '<p class="sub">No liked items yet.</p>';
+
+    const cb = $('#cartBody');
+    cb.innerHTML = CART.size? [...CART.values()].map(entry=>`
+      <div style="display:flex;gap:10px;align-items:center;margin:8px 0">
+        <img src="${entry.item.img}" alt="${entry.item.title}" loading="lazy" decoding="async" style="width:56px;height:42px;object-fit:cover;border-radius:8px">
+        <div style="flex:1">
+          <div style="font-weight:700">${entry.item.title}</div>
+          <div class="muted"><button class="btn link" data-dec="${entry.item.id}" aria-label="Decrease">−</button>
+            <strong>${entry.qty}</strong>
+            <button class="btn link" data-inc="${entry.item.id}" aria-label="Increase">+</button>
+            × ${money(entry.item.price)} = <strong>${money(entry.qty*entry.item.price)}</strong>
+            <button class="btn link" data-del="${entry.item.id}" aria-label="Remove">Remove</button>
+          </div>
+        </div>
+      </div>`).join('') : '<p class="sub">Your cart is empty.</p>';
+
+    const total = [...CART.values()].reduce((s,e)=> s + e.qty*e.item.price, 0);
+    $('#cartTotal').textContent = `Total: ${money(total)}`;
+  }
+
+  function renderProducts(){
+    const grid = $('#productGrid');
+    const cat = $('#filterCat').value;
+    const sortBy = $('#sortBy').value;
+
+    let list = PRODUCTS.slice();
+    if(cat !== 'all') list = list.filter(p=>p.cat===cat);
+    if(sortBy==='price-asc') list.sort((a,b)=>a.price-b.price);
+    if(sortBy==='price-desc') list.sort((a,b)=>b.price-a.price);
+
+    grid.innerHTML = list.map(p=>`
+      <article class="product-card" data-id="${p.id}">
+        <div class="imgwrap">
+          <img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async">
+        </div>
+        <div class="pbody">
+          <h4>${p.title}</h4>
+          <div class="muted">${p.cat} • <span class="price">${money(p.price)}</span></div>
+          <p class="muted">${p.blurb}</p>
+        </div>
+        <div class="row-actions">
+          <button class="btn" data-like="${p.id}">♥ Like</button>
+          <button class="btn primary" data-add="${p.id}">Add to Cart</button>
+        </div>
+      </article>`).join('');
+  }
+
+  function addLike(id){ const p = PRODUCTS.find(x=>x.id===id); if(!p) return; WISHLIST.set(id,p); refreshBadges(); renderDrawers(); saveState(); }
+  function addToCart(id){ const p = PRODUCTS.find(x=>x.id===id); if(!p) return; const cur=CART.get(id)||{item:p,qty:0}; cur.qty++; CART.set(id,cur); refreshBadges(); renderDrawers(); saveState(); }
+  function decFromCart(id){ const cur=CART.get(id); if(!cur) return; cur.qty--; if(cur.qty<=0) CART.delete(id); else CART.set(id,cur); refreshBadges(); renderDrawers(); saveState(); }
+  function delFromCart(id){ CART.delete(id); refreshBadges(); renderDrawers(); saveState(); }
+
+  document.addEventListener('click', (e)=>{
+    const like = e.target.closest('[data-like]'); if(like){ addLike(like.getAttribute('data-like')); return; }
+    const add = e.target.closest('[data-add]'); if(add){ addToCart(add.getAttribute('data-add')); return; }
+    const inc = e.target.closest('[data-inc]'); if(inc){ addToCart(inc.getAttribute('data-inc')); return; }
+    const dec = e.target.closest('[data-dec]'); if(dec){ decFromCart(dec.getAttribute('data-dec')); return; }
+    const del = e.target.closest('[data-del]'); if(del){ delFromCart(del.getAttribute('data-del')); return; }
+  });
+
+  $('#filterCat').addEventListener('change', renderProducts);
+  $('#sortBy').addEventListener('change', renderProducts);
+  renderProducts(); refreshBadges(); renderDrawers();
+
+  // ---------- WhatsApp deep link helpers ----------
+  function buildWAMessage(){
+    const lines = [];
+    const total = [...CART.values()].reduce((s,e)=> s + e.qty*e.item.price, 0);
+    if(CART.size){
+      lines.push('SkyGlobal Impex — Cart for quote:');
+      CART.forEach(({item,qty})=> lines.push(`• ${item.title} × ${qty} = ${money(qty*item.price)}`));
+      lines.push(`Total: ${money(total)}`);
+    } else {
+      lines.push('SkyGlobal Impex — I have a question:');
+    }
+    return encodeURIComponent(lines.join('\n'));
+  }
+  function updateWALinks(){
+    const msg = buildWAMessage();
+    // If you have a number, put it here: https://wa.me/<number>
+    const url = `https://wa.me/?text=${msg}`;
+    const wa1 = $('#waFab'); if(wa1) wa1.href = url;
+    const wa2 = $('#waLink'); if(wa2) wa2.href = url;
+  }
+  updateWALinks();
+
+  // Proceed: open cart + jump to contact
+  const proceed = $('#proceedQuote'); if(proceed){ proceed.addEventListener('click', ()=>{ closeWish(); openCart(); $('#contact').scrollIntoView({behavior:'smooth'}); updateWALinks(); }); }
+
+  // ---------- Form (client-side) ----------
+  const quoteForm = $('#quoteForm');
+  if(quoteForm){
+    quoteForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const fd = new FormData(quoteForm);
+      const data = Object.fromEntries(fd.entries());
+      // Fake success UI. Plug in your endpoint here if needed.
+      $('#formMsg').textContent = 'Thanks! Our team will reach out shortly.';
+      // Prefill WA with brief context:
+      updateWALinks();
+      quoteForm.reset();
+    });
+  }
+
+  // ---------- Tilt / Parallax UX ----------
+  if(!prefersReduced){
+    $$('.card[data-tilt]').forEach(card=>{
+      card.addEventListener('mousemove', e=>{
+        const r=card.getBoundingClientRect(); const x=e.clientX-r.left; const y=e.clientY-r.top;
+        const rx=((y/r.height)-.5)*-6; const ry=((x/r.width)-.5)*6;
+        card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      card.addEventListener('mouseleave', ()=> card.style.transform='rotateX(0) rotateY(0)');
+    });
+  }
+
+  // ---------- Three.js scene (throttled & reduced-motion aware) ----------
+  (()=>{
+    const canvas = document.getElementById('space');
+    if(!canvas || prefersReduced) return; // respect reduced motion
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const scene = new THREE.Scene(); scene.fog = new THREE.Fog(0x031027, 30, 220);
+    const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000); camera.position.set(0, 12, 46);
+    const light = new THREE.DirectionalLight(0xffffff, 1.2); light.position.set(20, 40, 30);
+    const rim = new THREE.DirectionalLight(0x66ccff, .8); rim.position.set(-30, 20, -40);
+    const amb = new THREE.AmbientLight(0x335577, .6); scene.add(light, rim, amb);
+    const grid = new THREE.GridHelper(600, 60, 0x0b2347, 0x0b2347); grid.position.y = -8; grid.material.opacity = 0.15; grid.material.transparent = true; scene.add(grid);
+
+    const plane = new THREE.Group();
+    const matBody = new THREE.MeshStandardMaterial({color:0x78e8ff, metalness:.6, roughness:.3});
+    const matWing = new THREE.MeshStandardMaterial({color:0x0ab0ff, metalness:.5, roughness:.35});
+    const matDark = new THREE.MeshStandardMaterial({color:0x082238, metalness:.3, roughness:.6});
+    const fuselage = new THREE.Mesh(new THREE.CapsuleGeometry(2.6, 12, 6, 12), matBody); fuselage.rotation.y = Math.PI/2;
+    const wingL = new THREE.Mesh(new THREE.BoxGeometry(1, .2, 8), matWing); wingL.position.set(0, -.4, -3.5); wingL.rotation.x = -.1;
+    const wingR = wingL.clone(); wingR.position.z = 3.5; wingR.rotation.x = .1;
+    const tailV = new THREE.Mesh(new THREE.BoxGeometry(.5, 2.2, 1.2), matDark); tailV.position.set(-6.6, 1, 0); tailV.rotation.z = .15;
+    const tailH = new THREE.Mesh(new THREE.BoxGeometry(1.8, .18, 2.6), matWing); tailH.position.set(-6.2, 0, 0);
+    const cockpit = new THREE.Mesh(new THREE.SphereGeometry(1.4, 16, 12), new THREE.MeshStandardMaterial({color:0x003e66, metalness:.2, roughness:.1, envMapIntensity:2})); cockpit.position.set(5, .3, 0); cockpit.scale.set(1.2, .7, 1.2);
+    plane.add(fuselage, wingL, wingR, tailV, tailH, cockpit); scene.add(plane);
+
+    const containers = new THREE.Group(); scene.add(containers);
+    const makeContainerMaterial = (()=>{ const c = document.createElement('canvas'); c.width=256; c.height=128; const x=c.getContext('2d'); x.fillStyle='#112a52'; x.fillRect(0,0,256,128); x.fillStyle='#173566'; for(let i=0;i<256;i+=10){x.fillRect(i,0,3,128);} x.fillStyle='#8fdfff'; x.font='bold 26px Outfit, sans-serif'; x.fillText('SKYGLOBAL', 80, 72); const tex=new THREE.CanvasTexture(c); tex.wrapS=tex.wrapT=THREE.RepeatWrapping; return new THREE.MeshStandardMaterial({map:tex, metalness:.3, roughness:.6}); })();
+    function spawnContainer(){ const b=new THREE.Mesh(new THREE.BoxGeometry(8,3,3.2), makeContainerMaterial.clone()); b.position.set((Math.random()*2-1)*30, -2+Math.random()*12, -40-Math.random()*60 ); b.rotation.y=Math.random()*Math.PI; b.rotation.x=(Math.random()-.5)*.2; b.userData.vy=.005+Math.random()*.008; containers.add(b); }
+    for(let i=0;i<14;i++) spawnContainer();
+
+    const parcels=[]; const parcelMat=new THREE.MeshStandardMaterial({color:0xffd166, metalness:.1, roughness:.9});
+    function dropParcel(){ const cube=new THREE.Mesh(new THREE.BoxGeometry(.8,.8,.8), parcelMat); const p=new THREE.Vector3(); plane.getWorldPosition(p); cube.position.copy(p).add(new THREE.Vector3(-1.4,-.4,0)); cube.userData.vel=new THREE.Vector3(-.16,-.02,0); cube.userData.rot=new THREE.Vector3((Math.random()-.5)*.08,(Math.random()-.5)*.08,(Math.random()-.5)*.08); parcels.push(cube); scene.add(cube); const ribbon=new THREE.Mesh(new THREE.PlaneGeometry(.2,.9), new THREE.MeshStandardMaterial({color:0x003e66, side:THREE.DoubleSide})); ribbon.rotation.y=Math.PI/2; ribbon.position.set(0,.5,0); cube.add(ribbon); }
+    const parcelTimer = setInterval(dropParcel, 2400);
+
+    function resize(){ const w=innerWidth,h=innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+    resize(); addEventListener('resize', resize);
+
+    const clock=new THREE.Clock(); let paused=false; let acc=0, fps=60, frame=1/fps;
+    document.addEventListener('visibilitychange', ()=>{ paused=document.hidden; if(paused) renderer.setAnimationLoop(null); else animate(); });
+    function animate(){ if(paused) return; renderer.setAnimationLoop((time)=>{ const dt=Math.min(clock.getDelta(), 0.033); acc+=dt; if(acc<frame) return; acc=0;
+      const t=time*0.0001;
+      camera.position.x=Math.sin(t*0.9)*4; camera.position.y=12+Math.cos(t*0.7)*2; camera.lookAt(0,0,0);
+      const x=Math.cos(t)*36; const y=Math.sin(t*1.3)*3+3; const z=-Math.sin(t*0.6)*10; plane.position.set(x,y,z);
+      plane.rotation.set(0.1*Math.sin(t*1.2), 0.3*Math.sin(t)-Math.sign(Math.sin(t))*.4, 0.15*Math.sin(t*1.6));
+      containers.children.forEach((c,i)=>{ c.position.z+=.22; c.position.y+=Math.sin(t*1.2+i)*.006 + c.userData.vy; c.rotation.y+=.002+(i%3)*.0006; c.rotation.x+=.0006*Math.sin(t+i); if(c.position.z>80){ c.position.z=-120-Math.random()*80; c.position.x=(Math.random()*2-1)*30; } });
+      for(let i=parcels.length-1;i>=0;i--){ const p=parcels[i]; p.userData.vel.y-=0.0045; p.position.add(p.userData.vel); p.rotation.x+=p.userData.rot.x; p.rotation.y+=p.userData.rot.y; p.rotation.z+=p.userData.rot.z; p.userData.vel.z+=0.0008; if(p.position.y<-6||p.position.z>120){ scene.remove(p); parcels.splice(i,1); } }
+      renderer.render(scene,camera);
+    }); }
+    animate();
+    addEventListener('beforeunload', ()=> clearInterval(parcelTimer));
+  })();
+
+  // ---------- Toast + tilt focus helpers ----------
+  function focusRing(el){ el.classList.add('pulse'); setTimeout(()=> el.classList.remove('pulse'), 1200); }
+
+  // ---------- JSON-LD (Organization + simple Product list) ----------
+  ;(function injectJSONLD(){
+    try{
+      const org = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SkyGlobal Impex",
+        "url": "https://example.com/",
+        "logo": "https://example.com/assets/brand/onlylogo.png"
+      };
+      const products = PRODUCTS.slice(0,6).map(p=>({
+        "@type":"Product",
+        "name": p.title,
+        "category": p.cat,
+        "image": p.img,
+        "offers": {"@type":"Offer","priceCurrency":"INR","price": String(p.price), "availability":"https://schema.org/InStock"}
+      }));
+      const graph = {"@context":"https://schema.org","@graph":[org, ...products]};
+      const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(graph);
+      document.head.appendChild(s);
+    } catch(e){ console.warn('JSON-LD failed', e); }
+  })();
+
+  // ---------- DEV smoke tests ----------
+  try {
+    console.assert(document.getElementById('categories'), 'Categories section should exist');
+    console.assert(typeof openCardById === 'function', 'openCardById should exist');
+    console.assert(openCardById('__missing__') === false, 'openCardById should return false for missing id');
+    console.assert(Array.isArray(searchSite('india')), 'searchSite should return an array');
+    console.log('SkyGlobal Impex: smoke tests passed');
+  } catch (e) {
+    console.warn('Smoke tests failed', e);
+  }
+  </script>
+</body>
+</html>
